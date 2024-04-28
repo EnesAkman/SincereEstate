@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>My Properties</title>
+</head>
+<body>
+Demo Sincere Estate!
+<div>
+    <div th:each="tempProperty: ${properties}">
+        <p th:text="${tempProperty.name}"></p>
+    </div>
+</div>
+</body>
+</html>
