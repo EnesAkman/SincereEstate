@@ -1,7 +1,7 @@
 package com.EEY.SincereEstate.service;
 
-import com.EEY.SincereEstate.Entity.Property;
-import com.EEY.SincereEstate.Entity.User;
+import com.EEY.SincereEstate.entity.Property;
+import com.EEY.SincereEstate.entity.User;
 import com.EEY.SincereEstate.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

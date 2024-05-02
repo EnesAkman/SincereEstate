@@ -1,7 +1,7 @@
 package com.EEY.SincereEstate.service;
 
 
-import com.EEY.SincereEstate.Entity.Property;
+import com.EEY.SincereEstate.entity.Property;
 
 import java.util.List;
 

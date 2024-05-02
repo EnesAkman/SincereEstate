@@ -1,8 +1,7 @@
-package com.EEY.SincereEstate.Controller;
+package com.EEY.SincereEstate.controller;
 
-import com.EEY.SincereEstate.Entity.Property;
-import com.EEY.SincereEstate.Entity.User;
-import com.EEY.SincereEstate.repos.UserRepository;
+import com.EEY.SincereEstate.entity.Property;
+import com.EEY.SincereEstate.entity.User;
 import com.EEY.SincereEstate.service.PropertyService;
 import com.EEY.SincereEstate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,17 @@ public class DemoController {
     }
 
     @GetMapping("/")
-    public String index() {
-        return "index";
+    public String homepage(Model model) {
+        List<Property> properties=propertyService.findAll();
+        model.addAttribute("properties", properties);
+        return "homepage";
     }
+
+    @GetMapping("/about-us")
+    public String aboutUs() {
+        return "about-us";
+    }
+
     @GetMapping("/users/{userId}/properties")
     public String properties(@PathVariable int userId, Model model) {
         List<Property> properties=userService.getPropertiesByUser(userId);

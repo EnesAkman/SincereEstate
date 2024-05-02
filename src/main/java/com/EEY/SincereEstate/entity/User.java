@@ -1,4 +1,4 @@
-package com.EEY.SincereEstate.Entity;
+package com.EEY.SincereEstate.entity;
 
 
 import jakarta.persistence.*;
