@@ -22,7 +22,7 @@ public class PropertyServiceImpl implements PropertyService {
     public User getOwner(int id) {
 
         Property property = propertyRepository.findById(id).orElseThrow();
-        return property.getOwner();
+        return null;
     }
 
     @Override

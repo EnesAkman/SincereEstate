@@ -21,6 +21,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Property> getPropertiesByUser(int id) {
         User user=userRepository.findById(id).orElseThrow();
-        return user.getPropertyList();
+        return null;
     }
+
+    @Override
+    public User register(User user) {
+        return userRepository.save(user);
+    }
+
 }

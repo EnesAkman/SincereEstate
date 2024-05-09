@@ -4,11 +4,11 @@ import com.EEY.SincereEstate.entity.Property;
 import com.EEY.SincereEstate.entity.User;
 import com.EEY.SincereEstate.service.PropertyService;
 import com.EEY.SincereEstate.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +36,20 @@ public class DemoController {
         return "about-us";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("user",new User());
+
+        return "register";
+    }
+
+
+
     @GetMapping("/users/{userId}/properties")
     public String properties(@PathVariable int userId, Model model) {
         List<Property> properties=userService.getPropertiesByUser(userId);
@@ -52,6 +66,13 @@ public class DemoController {
         model.addAttribute("property", property);
         return "property";
 
+    }
+
+    @PostMapping("/processRegister")
+    public String processRegister(@ModelAttribute("user") User user) {
+        userService.register(user);
+
+        return "redirect:/login";
     }
 
 }

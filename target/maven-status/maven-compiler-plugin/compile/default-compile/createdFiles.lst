@@ -1,0 +1,10 @@
+com\EEY\SincereEstate\service\UserService.class
+com\EEY\SincereEstate\repos\UserRepository.class
+com\EEY\SincereEstate\service\PropertyService.class
+com\EEY\SincereEstate\service\PropertyServiceImpl.class
+com\EEY\SincereEstate\service\UserServiceImpl.class
+com\EEY\SincereEstate\entity\Property.class
+com\EEY\SincereEstate\repos\PropertyRepository.class
+com\EEY\SincereEstate\controller\DemoController.class
+com\EEY\SincereEstate\SincereEstateApplication.class
+com\EEY\SincereEstate\entity\User.class

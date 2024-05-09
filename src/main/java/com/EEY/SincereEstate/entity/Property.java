@@ -1,9 +1,11 @@
 package com.EEY.SincereEstate.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "property")
+@Data
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,27 +17,35 @@ public class Property {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "property_type")
+    private String propertyType;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "price")
+    private double price;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "is_furnished")
+    private boolean isFurnished;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Column(name = "number_of_rooms")
+    private int numberOfRooms;
 
-    public User getOwner() {
-        return owner;
-    }
+    @Column(name = "building_age")
+    private int buildingAge;
 
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
+    @Column(name = "square_meters")
+    private int squareMeters;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "address")
+    private String address;
+
+
 }
