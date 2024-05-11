@@ -95,54 +95,18 @@
         </div>
         <div class="row justify-content-center px-0 px-lg-5">
             <h2 class="mt-5">My Properties</h2>
-            <div class="col-11 col-md-6 col-lg-3">
+            <div class="col-11 col-md-6 col-lg-3" th:each="property : ${properties}">
                 <div class="card m-1 mt-4">
                     <img class="card-img-top"
-                         src="https://cdnuploads.aa.com.tr/uploads/Contents/2022/01/16/thumbs_b_c_e722497e5b76f398ff14d02264439ea4.jpg"
+                         th:src="${property.imageUrl}"
                          alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">ESTÜ</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title" th:text="${property.name}"></h5>
+                        <p class="card-text" th:text="${property.propertyType}">.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             </div>
-            <div class="col-11 col-md-6 col-lg-3 ">
-                <div class="card m-1 mt-4">
-                    <img class="card-img-top"
-                         src="https://www.bayrak.com.tr/imajlar/ilanresim/Eskisehir-Teknik-universitesi-dikey-cekilen-bayraklar-416608.webp"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">test</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-11 col-md-6 col-lg-3 ">
-                <div class="card m-1 mt-4">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-11 col-md-6 col-lg-3 ">
-                <div class="card m-1 mt-4">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

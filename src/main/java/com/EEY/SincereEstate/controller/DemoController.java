@@ -39,7 +39,10 @@ public class DemoController {
         String activeEmail=principal.getName();
 
         Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+
+        activeUser.ifPresent(user->model.addAttribute("properties",userService.getPropertiesByUser(activeUser.get().getId())));
         activeUser.ifPresent(user -> model.addAttribute("activeUser", user));
+        System.out.println(userService.getPropertiesByUser(activeUser.get().getId()).size());
 
         return "profile.html";
     }
@@ -48,7 +51,22 @@ public class DemoController {
     public String newProperty(Model model) {
         model.addAttribute("property",new Property());
 
+
         return "new-property.html";
+    }
+    @PostMapping("/processProperty")
+    public String processProperty(
+            @Valid @ModelAttribute("property") Property newProperty,
+            BindingResult result,
+            Principal principal) {
+        String activeEmail=principal.getName();
+        Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+        activeUser.ifPresent(newProperty::setOwner);
+        propertyService.save(newProperty);
+        if (result.hasErrors()) {
+            return "new-property.html";
+        }
+        return "redirect:/my-profile";
     }
 
 

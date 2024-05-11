@@ -22,12 +22,20 @@ public class PropertyServiceImpl implements PropertyService {
     public User getOwner(int id) {
 
         Property property = propertyRepository.findById(id).orElseThrow();
-        return null;
+        return property.getOwner();
     }
+
+
 
     @Override
     public List<Property> findAll() {
         return propertyRepository.findAll();
+    }
+
+    @Override
+    public void save(Property property) {
+
+        propertyRepository.save(property);
     }
 
     @Override

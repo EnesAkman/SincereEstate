@@ -88,7 +88,7 @@
         <div class="row justify-content-center px-0 px-lg-5 py-4">
             <h2 class="my-3">Add a new property</h2>
 
-            <form action="#" th:action="@{/createProperty}" method="POST" class="form-horizontal">
+            <form action="#" th:action="@{/processProperty}" method="POST" class="form-horizontal">
 
                 <div class="row justify-content-between">
                     <div class="col-11 col-lg-5">
@@ -112,9 +112,16 @@
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <label class="form-label fs-5 mx-2">Is Furnished: </label>
-                            <input type="checkbox" th:field="${property.propertyType}" value="true" placeholder=""
+                            <input type="radio" id="isNotFurnished" th:field="${property.isFurnished}" th:value="Yes"
                                    class="form-check-input mt-2"/>
+                            <label for="isNotFurnished">Yes</label>
+                            <input type="radio" th:field="${property.isFurnished}" th:value="No"
+                                   class="form-check-input mt-2" checked="checked"/>
+                            <label for="isNotFurnished">No</label>
+
                         </div>
+
+
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <label class="form-label fs-5 mx-2">Number of rooms: </label>

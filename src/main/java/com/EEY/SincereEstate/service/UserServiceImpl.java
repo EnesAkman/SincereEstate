@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Property> getPropertiesByUser(int id) {
         User user=userRepository.findById(id).orElseThrow();
-        return null;
+
+        return user.getPropertyList();
     }
 
     @Transactional

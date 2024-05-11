@@ -24,7 +24,7 @@ public class Property {
     private double price;
 
     @Column(name = "is_furnished")
-    private boolean isFurnished;
+    private String isFurnished;
 
     @Column(name = "number_of_rooms")
     private int numberOfRooms;

@@ -6,6 +6,7 @@ import com.EEY.SincereEstate.entity.User;
 import java.util.List;
 
 public interface PropertyService {
+    void save(Property property);
     Property findById(int id);
     User getOwner(int id);
     List<Property> findAll();
