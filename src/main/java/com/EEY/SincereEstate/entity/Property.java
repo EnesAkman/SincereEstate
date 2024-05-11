@@ -47,5 +47,6 @@ public class Property {
     @Column(name = "address")
     private String address;
 
-
+    @Column(name = "image_url")
+    private String imageUrl;
 }

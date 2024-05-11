@@ -5,14 +5,15 @@ import com.EEY.SincereEstate.entity.User;
 import com.EEY.SincereEstate.service.PropertyService;
 import com.EEY.SincereEstate.service.UserService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class DemoController {
@@ -31,6 +32,23 @@ public class DemoController {
         List<Property> properties=propertyService.findAll();
         model.addAttribute("properties", properties);
         return "homepage";
+    }
+
+    @GetMapping("/my-profile")
+    public String profile(Model model, Principal principal) {
+        String activeEmail=principal.getName();
+
+        Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+        activeUser.ifPresent(user -> model.addAttribute("activeUser", user));
+
+        return "profile.html";
+    }
+
+    @GetMapping("/new-property")
+    public String newProperty(Model model) {
+        model.addAttribute("property",new Property());
+
+        return "new-property.html";
     }
 
 
