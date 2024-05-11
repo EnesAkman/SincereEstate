@@ -31,11 +31,11 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "enabled")
+    private int enabled;
+
     @OneToMany(mappedBy = "owner")
     private List<Property> propertyList;
-
-    
-
 
 
 }

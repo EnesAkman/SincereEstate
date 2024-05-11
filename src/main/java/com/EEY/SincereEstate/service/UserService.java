@@ -9,6 +9,6 @@ import java.util.List;
 public interface UserService {
 
     List<Property> getPropertiesByUser(int id);
-    User register(User user);
+    void register(User user);
 
 }

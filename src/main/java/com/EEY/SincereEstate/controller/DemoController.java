@@ -4,10 +4,12 @@ import com.EEY.SincereEstate.entity.Property;
 import com.EEY.SincereEstate.entity.User;
 import com.EEY.SincereEstate.service.PropertyService;
 import com.EEY.SincereEstate.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,7 @@ public class DemoController {
         model.addAttribute("properties", properties);
         return "homepage";
     }
+
 
     @GetMapping("/about-us")
     public String aboutUs() {
@@ -69,7 +72,11 @@ public class DemoController {
     }
 
     @PostMapping("/processRegister")
-    public String processRegister(@ModelAttribute("user") User user) {
+    public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "register";
+        }
+
         userService.register(user);
 
         return "redirect:/login";
