@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -31,7 +32,8 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .loginProcessingUrl("/authenticate")
                         .defaultSuccessUrl("/",true)
-                        .permitAll());
+                        .permitAll())
+                .logout(LogoutConfigurer::permitAll);
 //                .exceptionHandling(handler -> handler.accessDeniedPage("/access-denied"));
         http.csrf(AbstractHttpConfigurer::disable);
         return http.build();

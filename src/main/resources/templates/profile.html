@@ -85,27 +85,40 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center px-0 px-lg-5 py-4">
+        <div class="row justify-content-between px-0 px-lg-5 py-4">
             <h2>My Profile</h2>
-            <p class="fs-5">Name: <span th:text="${activeUser.firstName +' '+activeUser.lastName}"></span></p>
-            <p class="fs-5">Email: <span th:text="${activeUser.email}"></span></p>
-            <p class="fs-5">Phone: <span th:text="${activeUser.phone}"></span></p>
+            <div class="col-11 col-lg-5">
+                <p class="fs-5">Name: <span th:text="${activeUser.firstName +' '+activeUser.lastName}"></span></p>
+                <p class="fs-5">Email: <span th:text="${activeUser.email}"></span></p>
+                <p class="fs-5">Phone: <span th:text="${activeUser.phone}"></span></p>
+            </div>
+
+            <div class="col-11 col-lg-4 d-flex flex-row">
+                <div style="margin-top: 10px;" class="text-center mx-2">
+                    <a class="btn btn-warning fs-5">Edit Profile</a>
+                </div>
+                <div style="margin-top: 10px;" class="text-center mx-2">
+                    <a th:href="@{/logout}" class="btn btn-danger fs-5">Logout</a>
+                </div>
+            </div>
 
 
         </div>
         <div class="row justify-content-center px-0 px-lg-5">
             <h2 class="mt-5">My Properties</h2>
             <div class="col-11 col-md-6 col-lg-3" th:each="property : ${properties}">
-                <div class="card m-1 mt-4">
-                    <img class="card-img-top"
-                         th:src="${property.imageUrl}"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${property.name}"></h5>
-                        <p class="card-text" th:text="${property.propertyType}">.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="#" th:href="@{/property/{id}(id=${property.id})}" style="text-decoration:none;">
+                    <div class="card m-1 mt-4">
+                        <img class="card-img-top"
+                             th:src="${property.imageUrl}"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${property.name}"></h5>
+                            <p class="card-text" th:text="${property.propertyType}"></p>
+                            <p class="card-text fs-5 font-weight-bold" th:text="${'$'+property.price}"></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

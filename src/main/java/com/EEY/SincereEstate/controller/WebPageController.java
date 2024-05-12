@@ -16,13 +16,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class DemoController {
+public class WebPageController {
 
     private UserService userService;
     private PropertyService propertyService;
 
     @Autowired
-    public DemoController(UserService userService,PropertyService propertyService){
+    public WebPageController(UserService userService, PropertyService propertyService){
         this.userService=userService;
         this.propertyService=propertyService;
     }
@@ -42,7 +42,6 @@ public class DemoController {
 
         activeUser.ifPresent(user->model.addAttribute("properties",userService.getPropertiesByUser(activeUser.get().getId())));
         activeUser.ifPresent(user -> model.addAttribute("activeUser", user));
-        System.out.println(userService.getPropertiesByUser(activeUser.get().getId()).size());
 
         return "profile.html";
     }
@@ -97,14 +96,15 @@ public class DemoController {
     }
 
     @GetMapping("/property/{propertyId}")
-    public String showProperty(@PathVariable int propertyId, Model model) {
+    public String showProperty(@PathVariable int propertyId, Model model, Principal principal) {
         Property property=propertyService.findById(propertyId);
-        User user=propertyService.getOwner(propertyId);
 
-        model.addAttribute("user", user);
+        String activeEmail=principal.getName();
+        Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+        activeUser.ifPresent(user -> model.addAttribute("activeUser", user));
+
         model.addAttribute("property", property);
         return "property";
-
     }
 
     @PostMapping("/processRegister")

@@ -95,6 +95,10 @@ a:hover {
   outline: 0;
 }
 
+.img-border {
+    border:2px solid black;
+}
+
 a,
 a:hover {
   transition: all 0.3s ease;
