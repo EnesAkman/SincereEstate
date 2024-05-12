@@ -33,8 +33,12 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public void save(Property property) {
+    public void deleteById(int id) {
+        propertyRepository.deleteById(id);
+    }
 
+    @Override
+    public void save(Property property) {
         propertyRepository.save(property);
     }
 

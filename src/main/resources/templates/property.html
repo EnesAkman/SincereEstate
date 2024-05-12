@@ -111,10 +111,12 @@
                 <br>
                 <div th:if="${property.owner.id==activeUser.id}" class="d-flex flex-row justify-content-between mt-5">
                     <div style="margin-top: 10px;" class="text-center">
-                        <button class="btn btn-warning fs-5">Edit Details</button>
+                        <a href="#" th:href="@{/property/{id}/edit(id=${property.id})}" class="btn btn-warning fs-5">Edit Details</a>
                     </div>
                     <div style="margin-top: 10px;" class="text-center">
-                        <button class="btn btn-danger fs-5">Delete Property</button>
+                        <form th:action="@{/property/delete/{id}(id=${property.id})}" th:method="post">
+                            <button type="submit" class="btn btn-danger fs-5">Delete Property</button>
+                        </form>
                     </div>
                 </div>
             </div>

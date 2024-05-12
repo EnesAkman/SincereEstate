@@ -107,6 +107,32 @@ public class WebPageController {
         return "property";
     }
 
+    @GetMapping("/property/{propertyId}/edit")
+    public String showEditProperty(@PathVariable int propertyId, Model model) {
+        model.addAttribute("property", propertyService.findById(propertyId));
+        return "update-property";
+    }
+
+
+    @PostMapping("/property/edit")
+    public String editProperty( @Valid @ModelAttribute Property property,
+                                BindingResult result,
+                                Principal principal){
+        String activeEmail=principal.getName();
+        Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+        activeUser.ifPresent(property::setOwner);
+        propertyService.save(property);
+        if (result.hasErrors()) {
+            return "update-property";
+        }
+        return "redirect:/my-profile";
+    }
+    @PostMapping("/property/delete/{propertyId}")
+    public String deleteProperty(@PathVariable int propertyId){
+        propertyService.deleteById(propertyId);
+        return "redirect:/my-profile";
+    }
+
     @PostMapping("/processRegister")
     public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
