@@ -12,4 +12,5 @@ public interface UserService {
     List<Property> getPropertiesByUser(int id);
     void register(User user);
     Optional<User> getUserByEmail(String email);
+    List<User> findAll();
 }
