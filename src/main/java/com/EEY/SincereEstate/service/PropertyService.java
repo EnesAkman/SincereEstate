@@ -11,4 +11,5 @@ public interface PropertyService {
     Property findById(int id);
     User getOwner(int id);
     List<Property> findAll();
+    List<Property> searchProperties(String name);
 }

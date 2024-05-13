@@ -45,5 +45,9 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public Property findById(int id) {
         return propertyRepository.findById(id).orElseThrow();
+
+    }
+    public List<Property> searchProperties(String name) {
+        return propertyRepository.findByNameContaining(name);
     }
 }
