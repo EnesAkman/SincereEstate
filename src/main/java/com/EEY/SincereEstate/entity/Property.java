@@ -3,6 +3,8 @@ package com.EEY.SincereEstate.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "property")
 @Data
@@ -52,4 +54,21 @@ public class Property {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    private final static List<String> houseTypes = List.of(
+            "Single-Family Home",
+            "Duplex",
+            "Townhouse",
+            "Condominium (Condo)",
+            "Apartment",
+            "Bungalow",
+            "Cottage",
+            "Ranch-style",
+            "Victorian",
+            "Craftsman"
+    );
+
+    public List<String> getHouseTypes() {
+        return houseTypes;
+    }
 }

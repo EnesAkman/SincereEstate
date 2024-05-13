@@ -48,9 +48,8 @@ public class WebPageController {
 
     @GetMapping("/new-property")
     public String newProperty(Model model) {
-        model.addAttribute("property",new Property());
-
-
+        Property property=new Property();
+        model.addAttribute("property",property);
         return "new-property.html";
     }
     @PostMapping("/processProperty")
@@ -86,7 +85,17 @@ public class WebPageController {
         return "register";
     }
 
-
+    @GetMapping("/my-profile/edit")
+    public String showEditProfile(Model model, Principal principal) {
+        String activeEmail=principal.getName();
+        Optional<User> activeUser=userService.getUserByEmail(activeEmail);
+        activeUser.ifPresent(user->model.addAttribute("activeUser",user));
+        return "edit-profile";
+    }
+    @PostMapping("/my-profile/edit")
+    public String editProfile( @Valid @ModelAttribute User user){
+        return "redirect:/my-profile";
+    }
 
     @GetMapping("/users/{userId}/properties")
     public String properties(@PathVariable int userId, Model model) {

@@ -101,8 +101,21 @@
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <label class="form-label fs-5 mx-2">Property Type: </label>
-                            <input type="text" th:field="${property.propertyType}" th:placeholder="${property.propertyType}"
-                                   class="form-control"/>
+                            <select class="form-select" th:field="${property.propertyType}">
+                                <option th:text="${property.propertyType}" th:value="${property.propertyType}" selected></option>
+                                <option th:each="type : ${property.houseTypes}"
+                                        th:text="${type}"
+                                        th:value="${type}"></option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">Property Status: </label>
+                            <select class="form-select" th:field="${property.propertyStatus}">
+                                <option th:text="${property.propertyStatus}" th:value="${property.propertyStatus}" selected></option>
+                                <option value="For Sale">For Sale</option>
+                                <option value="For Rent">For Rent</option>
+                            </select>
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
