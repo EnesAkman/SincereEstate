@@ -25,12 +25,32 @@ public class PropertyServiceImpl implements PropertyService {
         return property.getOwner();
     }
 
+    @Override
+    public List<Property> findByName(String name) {
+        return propertyRepository.findByNameContaining(name);
+    }
 
 
     @Override
     public List<Property> findAll() {
         return propertyRepository.findAll();
     }
+
+    @Override
+    public List<Property> findByCountry(String country) {
+        return propertyRepository.findByCountry(country);
+    }
+
+    @Override
+    public List<Property> findByCountryAndState(String country, String state) {
+        return propertyRepository.findByCountryAndState(country, state);
+    }
+
+    @Override
+    public List<Property> findByCountryAndStateAndCity(String country, String state,String city) {
+        return propertyRepository.findByCountryAndStateAndCity(country,state,city);
+    }
+
 
     @Override
     public void deleteById(int id) {
@@ -47,7 +67,5 @@ public class PropertyServiceImpl implements PropertyService {
         return propertyRepository.findById(id).orElseThrow();
 
     }
-    public List<Property> searchProperties(String name) {
-        return propertyRepository.findByNameContaining(name);
-    }
+
 }

@@ -7,5 +7,11 @@ import java.util.List;
 
 public interface PropertyRepository extends JpaRepository<Property, Integer> {
     List<Property> findByNameContaining(String name);
+    List<Property> findByCountry(String country);
+    List<Property> findByCountryAndState(String country, String state);
+    List<Property> findByCountryAndStateAndCity(String country, String state, String city);
+
+
+
 
 }
