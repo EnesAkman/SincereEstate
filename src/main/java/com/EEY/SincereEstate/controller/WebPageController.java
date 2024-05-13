@@ -148,8 +148,17 @@ public class WebPageController {
     public String findAllUsers(Model model){
         List<User> users=userService.findAll();
         model.addAttribute("users",users);
-        return "users";
+        return "admin-page-1";
     }
+
+    @GetMapping("/admin/properties")
+    public String findAllProperties(Model model){
+        List<Property> properties=propertyService.findAll();
+        model.addAttribute("properties",properties);
+        return "admin-page-2";
+    }
+
+
     @GetMapping("/search")
     public String search(@RequestParam("name") String name, Model model) {
         List<Property> properties = propertyService.searchProperties(name);

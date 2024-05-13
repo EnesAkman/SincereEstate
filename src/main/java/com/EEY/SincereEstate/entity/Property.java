@@ -20,6 +20,9 @@ public class Property {
     @Column(name = "property_type")
     private String propertyType;
 
+    @Column(name = "property_status")
+    private String propertyStatus;
+
     @Column(name = "price")
     private double price;
 

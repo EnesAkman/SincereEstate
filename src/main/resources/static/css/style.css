@@ -194,6 +194,12 @@ aside.menu-sidebar.d-none.d-lg-block.clr {
   border-radius: 10px;
 }
 
+.a-hovered {
+    background-color: white;
+    border-radius: 10px;
+    text-decoration:none;
+}
+
 a.primary-btn {
   background: #05143f;
   padding: 7px 20px;
