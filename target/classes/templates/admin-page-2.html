@@ -22,12 +22,14 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar-list">
                 <li>
-                    <a th:href="@{/admin/users}">Users</a>
+                    <a th:href="@{/admin/users}" style="text-decoration:none;">Users</a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/properties}" class="a-hovered text-dark">Properties</a>
+                    <a th:href="@{/admin/properties}" style="text-decoration:none;">Properties</a>
                 </li>
-
+                <li>
+                    <a th:href="@{/logout}" class="btn btn-danger" style="text-decoration:none;">Logout</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -36,46 +38,48 @@
 <div class="page-container">
 
     <div class="container">
-        <h3>Property list</h3>
-        <hr>
+        <div class="row">
+            <h3 class="mt-5">Property list</h3>
+            <hr>
 
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-            <tr>
-                <th>Property Title</th>
-                <th>Property Type</th>
-                <th>Property Status</th>
-                <th>Price</th>
-                <th>Is Furnished</th>
-                <th>Number of Rooms</th>
-                <th>Building Age</th>
-                <th>Square meters</th>
-                <th>Country</th>
-                <th>State</th>
-                <th>City</th>
-                <th>Address</th>
-                <th>Image URL</th>
-            </tr>
-            </thead>
+            <table class="table table-bordered table-striped" >
+                <thead class="table-dark">
+                <tr>
+                    <th>Property Title</th>
+                    <th>Property Type</th>
+                    <th>Property Status</th>
+                    <th>Price</th>
+                    <th>Is Furnished</th>
+                    <th>Number of Rooms</th>
+                    <th>Building Age</th>
+                    <th>Square meters</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Image URL</th>
+                </tr>
+                </thead>
 
-            <tbody>
-            <tr th:each="property : ${properties}">
-                <td th:text="${property.name}"/>
-                <td th:text="${property.propertyType}"/>
-                <td th:text="${property.propertyStatus}"/>
-                <td th:text="${property.price}"/>
-                <td th:text="${property.isFurnished}"/>
-                <td th:text="${property.numberOfRooms}"/>
-                <td th:text="${property.buildingAge}"/>
-                <td th:text="${property.squareMeters}"/>
-                <td th:text="${property.country}"/>
-                <td th:text="${property.state}"/>
-                <td th:text="${property.city}"/>
-                <td th:text="${property.address}"/>
-                <td th:text="${property.imageUrl}"/>
-            </tr>
-            </tbody>
-        </table>
+                <tbody>
+                <tr th:each="property : ${properties}">
+                    <td th:text="${property.name}"/>
+                    <td th:text="${property.propertyType}"/>
+                    <td th:text="${property.propertyStatus}"/>
+                    <td th:text="${property.price}"/>
+                    <td th:text="${property.isFurnished}"/>
+                    <td th:text="${property.numberOfRooms}"/>
+                    <td th:text="${property.buildingAge}"/>
+                    <td th:text="${property.squareMeters}"/>
+                    <td th:text="${property.country}"/>
+                    <td th:text="${property.state}"/>
+                    <td th:text="${property.city}"/>
+                    <td th:text="${property.address}"/>
+                    <td th:text="${property.imageUrl}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
