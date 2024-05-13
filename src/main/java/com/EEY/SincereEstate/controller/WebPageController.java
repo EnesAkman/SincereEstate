@@ -154,6 +154,6 @@ public class WebPageController {
     public String search(@RequestParam("name") String name, Model model) {
         List<Property> properties = propertyService.searchProperties(name);
         model.addAttribute("properties", properties);
-        return "search";
+        return "homepage";
     }
 }
