@@ -291,5 +291,5 @@ a.primary-btn:hover {
   background-color: #c0392b !important;
 }
 .dropdown-menu {
-  min-width: 250px; /* Adjust the width as needed */
+  min-width: 250px;
 }

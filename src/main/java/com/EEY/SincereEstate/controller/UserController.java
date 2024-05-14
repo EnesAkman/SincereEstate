@@ -43,8 +43,9 @@ public class UserController {
         return "edit-profile";
     }
 
-    @PostMapping("/my-profile/edit")
-    public String editProfile( @Valid @ModelAttribute User user){
+    @PostMapping("/my-profile/processEdit")
+    public String editProfile( @Valid @ModelAttribute User user, BindingResult bindingResult){
+        userService.register(user);
         return "redirect:/my-profile";
     }
 

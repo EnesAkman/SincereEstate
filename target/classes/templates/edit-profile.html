@@ -86,19 +86,43 @@
 
     <div class="container">
         <div class="row justify-content-center px-0 px-lg-5 py-4">
-            <h2 class="my-3">Add a new property</h2>
+            <h2 class="my-3">Edit Profile</h2>
 
-            <form action="#" class="form-horizontal" method="POST" th:action="@{/my-profile/edit}">
+            <form action="#" class="form-horizontal" method="POST" th:action="@{/my-profile/processEdit}">
 
                 <div class="row justify-content-between">
                     <div class="col-11 col-lg-5">
-                        <input th:field="${property.id}" th:value="${property.getId()}" type="hidden">
-                        <div class="input-group" style="margin-bottom: 25px">
-                            <label class="form-label fs-5 mx-2">Property Title: </label>
-                            <input class="form-control" th:field="${property.name}" th:placeholder="${property.name}"
-                                   type="text"/>
+                        <input type="hidden" th:field="${activeUser.id}" th:value="${activeUser.getId()}">
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">First name: </label>
+                            <input type="text" th:field="${activeUser.firstName}" th:placeholder="${activeUser.firstName}"
+                                   class="form-control"/>
                         </div>
 
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">Last name: </label>
+                            <input type="text" th:field="${activeUser.lastName}" th:placeholder="${activeUser.lastName}"
+                                   class="form-control"/>
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">Email: </label>
+                            <input type="text" th:field="${activeUser.email}" th:placeholder="${activeUser.email}"
+                                   class="form-control"/>
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">Password: </label>
+                            <input type="password" th:field="${activeUser.password}"
+                                   class="form-control"/>
+                        </div>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <label class="form-label fs-5 mx-2">Last name: </label>
+                            <input type="number" th:field="${activeUser.phone}" th:placeholder="${activeUser.phone}"
+                                   class="form-control"/>
+                        </div>
 
                     </div>
 

@@ -105,24 +105,24 @@
             </div>
         </div>
     </nav>
-</div>
 
 
-<div class="container">
-    <div class="row justify-content-center px-0 px-lg-4 py-4">
-        <div class="col-11 col-md-6 col-lg-3" th:each="tempProperty: ${properties}">
-            <a href="#" th:href="@{/property/{id}(id=${tempProperty.id})}" style="text-decoration:none;">
-                <div class="card m-1 mt-4">
-                    <img class="card-img-top"
-                         th:src="${tempProperty.imageUrl}"
-                         alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${tempProperty.name}"></h5>
-                        <p class="card-text" th:text="${tempProperty.propertyType}"></p>
-                        <p class="card-text fs-5 font-weight-bold" th:text="${'$'+tempProperty.price}"></p>
+    <div class="container">
+        <div class="row justify-content-center px-0 px-lg-4 py-4">
+            <div class="col-11 col-md-6 col-lg-3" th:each="tempProperty: ${properties}">
+                <a href="#" th:href="@{/property/{id}(id=${tempProperty.id})}" style="text-decoration:none;">
+                    <div class="card m-1 mt-4">
+                        <img class="card-img-top"
+                             th:src="${tempProperty.imageUrl}"
+                             alt="Property image not found">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${tempProperty.name}"></h5>
+                            <p class="card-text" th:text="${tempProperty.propertyType}"></p>
+                            <p class="card-text fs-5 font-weight-bold" th:text="${'$'+tempProperty.price}"></p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </div>
