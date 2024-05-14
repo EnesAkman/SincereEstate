@@ -50,6 +50,11 @@ public class UserController {
 
     @PostMapping("/processRegister")
     public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+        Optional<User> temp=userService.getUserByEmail(user.getEmail());
+
+        if(temp.isPresent()){
+            return "redirect:/register";
+        }
         if(bindingResult.hasErrors()) {
             return "register";
         }

@@ -37,6 +37,11 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
+    public List<Property> findByStatus(String status) {
+        return propertyRepository.findByPropertyStatus(status);
+    }
+
+    @Override
     public List<Property> findByCountry(String country) {
         return propertyRepository.findByCountry(country);
     }

@@ -10,6 +10,7 @@ public interface PropertyRepository extends JpaRepository<Property, Integer> {
     List<Property> findByCountry(String country);
     List<Property> findByCountryAndState(String country, String state);
     List<Property> findByCountryAndStateAndCity(String country, String state, String city);
+    List<Property> findByPropertyStatus(String propertyStatus);
 
 
 

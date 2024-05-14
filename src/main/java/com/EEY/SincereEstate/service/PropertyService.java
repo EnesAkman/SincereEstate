@@ -15,4 +15,5 @@ public interface PropertyService {
     List<Property> findByCountryAndState(String country, String state);
     List<Property> findByCountryAndStateAndCity(String country, String state,String city);
     List<Property> findAll();
+    List<Property> findByStatus(String status);
 }

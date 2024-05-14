@@ -46,25 +46,35 @@ public class PageController {
                                    @RequestParam(name = "city", required = false) String city,
                                    Model model) {
         List<Property> properties;
-        System.out.println("test");
         if (country != null && !country.isEmpty()) {
             if (state != null && !state.isEmpty()) {
                 if (city != null && !city.isEmpty()) {
-                    // All parameters provided
                     properties = propertyService.findByCountryAndStateAndCity(country, state, city);
                 } else {
-                    // Country and state provided, city not provided
                     properties = propertyService.findByCountryAndState(country, state);
                 }
             } else {
-                // Only country provided
+
                 properties = propertyService.findByCountry(country);
             }
         } else {
-            // No country provided
-            System.out.println("test");
+
             properties = propertyService.findAll();
         }
+        model.addAttribute("properties", properties);
+        return "homepage";
+    }
+
+    @GetMapping("/search-sales")
+    public String searchSales(Model model){
+        List<Property> properties = propertyService.findByStatus("For Sale");
+        model.addAttribute("properties", properties);
+        return "homepage";
+    }
+
+    @GetMapping("/search-rents")
+    public String searchRents(Model model){
+        List<Property> properties = propertyService.findByStatus("For Rent");
         model.addAttribute("properties", properties);
         return "homepage";
     }
