@@ -93,6 +93,9 @@ public class PageController {
         return "admin-page-2";
     }
 
-
+    @GetMapping("/access-denied")
+    public String showAccessDenied() {
+        return "access-denied";
+    }
 
 }

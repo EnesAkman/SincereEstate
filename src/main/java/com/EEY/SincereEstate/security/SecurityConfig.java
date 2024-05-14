@@ -30,7 +30,8 @@ public class SecurityConfig   {
                         .loginProcessingUrl("/authenticate")
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .permitAll())
-                .logout(LogoutConfigurer::permitAll);
+                .logout(LogoutConfigurer::permitAll)
+                .exceptionHandling(handler -> handler.accessDeniedPage("/access-denied"));
         http.csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
